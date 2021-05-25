@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="guideline4" type="id" />
+    <item name="guideline7" type="id" />
+    <item name="guideline5" type="id" />
+    <item name="guideline8" type="id" />
+    <item name="guideline9" type="id" />
+    <item name="guideline3" type="id" />
+    <item name="score" type="id" />
+</resources>

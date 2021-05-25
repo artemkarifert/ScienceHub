@@ -2,6 +2,7 @@ package com.tsg.test;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
