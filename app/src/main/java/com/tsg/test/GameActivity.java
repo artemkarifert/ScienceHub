@@ -1,11 +1,16 @@
 package com.tsg.test;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -21,7 +26,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_game);
 
         answer = generate();
 
@@ -138,10 +143,6 @@ public class GameActivity extends AppCompatActivity {
 
                 int result = Integer.parseInt((String) textView.getText());
 
-                while (answer == 0)
-                    answer = generate();
-
-
 
                 if (textView.getText() != null){
 
@@ -156,7 +157,16 @@ public class GameActivity extends AppCompatActivity {
                     }
 
                     else {
-                        //System.exit(0);
+                        time -= 2;
+                        /*final TextView minus = findViewById(R.id.time2);
+                        minus.setVisibility(View.VISIBLE);
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                minus.setVisibility(View.INVISIBLE);
+                            }
+                        }, 1000);*/
                     }
 
                 }
@@ -219,12 +229,12 @@ public class GameActivity extends AppCompatActivity {
             int secondNumber = rnd(5, 100);
 
             if(firstNumber - secondNumber > 0){
+                answer = firstNumber - secondNumber;
                 String math = firstNumber + "-" + secondNumber;
                 result.setText(math);
-                answer = firstNumber - secondNumber;
             }
             else {
-                return 0;
+                return generate();
             }
 
         }
@@ -243,13 +253,13 @@ public class GameActivity extends AppCompatActivity {
             int secondNumber = rnd(2, 10);
 
             if(firstNumber % secondNumber == 0){
+                answer = firstNumber / secondNumber;
                 String math = firstNumber + "/" + secondNumber;
                 result.setText(math);
-                answer = firstNumber / secondNumber;
             }
 
             else {
-                return 0;
+                return generate();
             }
 
         }
@@ -275,12 +285,20 @@ public class GameActivity extends AppCompatActivity {
                     time -= 1;
                     timeView.setText(Integer.toString(time));
 
-                    /*if(time < 0) {
-                        System.exit(0);
-                    }*/
+                    if(time <= 0) {
+                        lose();
+                        cancel();
+                    }
                 }
             });
         }
     }
 
+    public void lose(){
+        Intent intent = new Intent(GameActivity.this, End.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("score", score);
+        intent.putExtra("path", 1);
+        startActivity(intent);
+    }
 }

@@ -38,6 +38,7 @@ public class NotificationsFragment extends Fragment {
                 intent.putExtra("descpiption", "Простейшие математические примеры вызывают" +
                         " желание потянуться к калькулятору? С помощью этой игры вы научитесь щелкать" +
                         " примеры как орешки и стать самым настоящим знатоком!");
+                intent.putExtra("path", 1);
 
                 startActivity(intent);
             }

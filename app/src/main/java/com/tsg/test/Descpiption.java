@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.tsg.test.ui.dashboard.QuizActivity;
+
 public class Descpiption extends AppCompatActivity {
 
     @Override
@@ -18,6 +20,7 @@ public class Descpiption extends AppCompatActivity {
         Bundle arguments = getIntent().getExtras();
         String name = arguments.get("name").toString();
         String descpiption = arguments.get("descpiption").toString();
+        final int path = arguments.getInt("path");
 
         TextView nameView = findViewById(R.id.textView11);
         TextView descpiptionView = findViewById(R.id.textView13);
@@ -29,7 +32,12 @@ public class Descpiption extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Descpiption.this, GameActivity.class);
+                Intent intent;
+                if(path == 1)
+                    intent = new Intent(Descpiption.this, GameActivity.class);
+                else
+                    intent = new Intent(Descpiption.this, QuizActivity.class);
+
                 startActivity(intent);
             }
         });

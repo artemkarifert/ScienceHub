@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">test</string>
+    <string name="app_name">Science Hub</string>
     <string name="title_home">Главная</string>
     <string name="title_quiz">Викторины</string>
     <string name="title_games">Игры</string>

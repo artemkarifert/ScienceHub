@@ -7,6 +7,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.tsg.test.ui.data.QuestionDbHelper;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -48,14 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        /*ScrollView sView = (ScrollView)findViewById(R.id.ScrollView);
-        sView.setVerticalScrollBarEnabled(false);*/
-
-
-        /*Typeface CF = Typeface.createFromAsset(getAssets(), "fonts/poppins_bold.ttf");
-        TextView textView = findViewById(R.id.textView);
-        textView.setTypeface(CF);*/ //Не понимаю как сделать шрифт, при этом способе крашит
 
     }
 
